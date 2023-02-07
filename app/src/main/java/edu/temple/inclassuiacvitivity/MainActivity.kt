@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         val displayTextView = findViewById<TextView>(R.id.textDisplay)
 
         /* Step 1: Populate this array */
-        val numberArray = arrayOf(5, 10, 15, 20, 25, 30, 35)
+        val numberArray = arrayOf(5, 10, 15, 20, 25, 30, 35, 40)
 
         /* Step 2: Create adapter to display items from array in Spinner */
         spinner.adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, numberArray)
@@ -25,8 +25,12 @@ class MainActivity : AppCompatActivity() {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 //p1 - specific view that is selected by spinner
                 //p2 - index of the selected element
-                p1?.run {
+                /*p1?.run {
                     val number = (this as TextView).text.toString()
+                    displayTextView.textSize = number.toFloat()
+                }*/
+                p0?.run{
+                    val number = getItemAtPosition(p2).toString()
                     displayTextView.textSize = number.toFloat()
                 }
             }
